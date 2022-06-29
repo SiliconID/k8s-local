@@ -31,21 +31,13 @@ spec:
         podMonitorSelector:
           matchLabels:
             app.kubernetes.io/component: monitoring
-    sidecar:
-      dashboards:
-        enabled: true
-        label: grafana_dashboard
-
-        ## Annotations for Grafana dashboard configmaps
-        ##
-        annotations: {}
-        multicluster:
-          global:
-            enabled: false
-          etcd:
-            enabled: false
-        provider:
-          allowUiUpdates: false
-      datasources:
-        enabled: true
-        defaultDatasourceEnabled: true
+    grafana:
+      sidecar:
+        dashboards:
+          enabled: true                        # To enable dashboards as configMaps automatically picked up by Grafana
+          label: grafana_dashboard             # Label the configMaps should have in order to be added
+          folder: /tmp/dashboards
+          searchNamespace: ALL 
+        datasources:
+          enabled: true
+          defaultDatasourceEnabled: true
