@@ -12,6 +12,9 @@ spec:
         kind: HelmRepository
         name: prometheus-community
       interval: 60m
+  test:
+    enable: true
+    ignoreFailures: true
   install:
     crds: Create
   upgrade:
