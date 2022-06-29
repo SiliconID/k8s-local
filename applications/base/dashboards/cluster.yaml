@@ -1,10 +1,14 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: cluster-dashboard
   namespace: monitoring
+  name: flux
+  annotations:
+    {}
   labels:
-    app.kubernetes.io/name: grafana
+    grafana_dashboard: "1"
+    app: kube-prometheus-stack-grafana
+    app.kubernetes.io/part-of: kube-prometheus-stack
 data:
   cluster.json: |-
     {
